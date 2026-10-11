@@ -69,7 +69,7 @@ export default function SearchForm({ onSearch, loading }) {
           )}
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', paddingBottom: hasError ? '1.6rem' : 0 }}>
+        <div className="search-submit-wrap" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
           <button
             id="search-submit-btn"
             type="submit"

@@ -45,7 +45,7 @@ export default function AboutPage() {
             <h2 style={{ fontSize: '1rem', color: 'var(--text-secondary)', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
               Student Details
             </h2>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
+            <table className="student-details-table" style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
               <tbody>
                 {[
                   ['Name', 'Ansh Gupta'],

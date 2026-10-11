@@ -62,24 +62,28 @@ export default function RainfallChart({ records }) {
   return (
     <section className="chart-section animate-fade-in" aria-label="14-day rainfall bar chart">
       <h2 className="section-title">📊 14-Day Precipitation Chart</h2>
-      <ResponsiveContainer width="100%" height={260}>
-        <BarChart data={chartData} margin={{ top: 8, right: 16, left: -10, bottom: 5 }}>
+      <ResponsiveContainer width="100%" height={280}>
+        <BarChart data={chartData} margin={{ top: 8, right: 12, left: -16, bottom: 25 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
           <XAxis
             dataKey="date"
-            tick={{ fill: 'var(--text-muted)', fontSize: 11 }}
+            tick={{ fill: 'var(--text-muted)', fontSize: 10 }}
+            tickFormatter={(val) => (val && val.includes(', ') ? val.split(', ')[1] : val)}
             axisLine={false}
             tickLine={false}
-            interval={1}
+            interval={0}
+            angle={-35}
+            textAnchor="end"
+            height={42}
           />
           <YAxis
-            tick={{ fill: 'var(--text-muted)', fontSize: 11 }}
+            tick={{ fill: 'var(--text-muted)', fontSize: 10 }}
             axisLine={false}
             tickLine={false}
             unit=" mm"
           />
           <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255,255,255,0.03)' }} />
-          <Bar dataKey="precipitation" radius={[4, 4, 0, 0]} maxBarSize={40}>
+          <Bar dataKey="precipitation" radius={[4, 4, 0, 0]} maxBarSize={36}>
             {chartData.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={getBarColor(entry.precipitation)} />
             ))}

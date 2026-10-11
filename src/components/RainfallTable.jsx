@@ -84,7 +84,7 @@ export default function RainfallTable({ records }) {
         <table className="data-table" aria-label="14-day rainfall data">
           <thead>
             <tr>
-              <th scope="col">
+              <th scope="col" className="col-date">
                 <button
                   id="sort-date-btn"
                   onClick={() => setSortAsc((prev) => !prev)}
@@ -107,10 +107,10 @@ export default function RainfallTable({ records }) {
                   {sortAsc ? <RiArrowUpSLine /> : <RiArrowDownSLine />}
                 </button>
               </th>
-              <th scope="col">Precipitation (mm)</th>
-              <th scope="col">Max Temp (°C)</th>
-              <th scope="col">Min Temp (°C)</th>
-              <th scope="col">Intensity</th>
+              <th scope="col" className="col-rain">Rain (mm)</th>
+              <th scope="col" className="col-temp">Max Temp</th>
+              <th scope="col" className="col-temp">Min Temp</th>
+              <th scope="col" className="col-intensity">Intensity</th>
             </tr>
           </thead>
           <tbody>
@@ -125,19 +125,19 @@ export default function RainfallTable({ records }) {
                 const { label, className } = classifyRainfall(record.precipitation);
                 return (
                   <tr key={record.id}>
-                    <td style={{ color: 'var(--text-primary)', fontWeight: 500 }}>
+                    <td className="col-date" style={{ color: 'var(--text-primary)', fontWeight: 500 }}>
                       {formatDate(record.date)}
                     </td>
-                    <td style={{ fontVariantNumeric: 'tabular-nums' }}>
+                    <td className="col-rain" style={{ fontVariantNumeric: 'tabular-nums' }}>
                       {(record.precipitation ?? 0).toFixed(2)}
                     </td>
-                    <td>
+                    <td className="col-temp">
                       {record.tempMax !== null ? `${record.tempMax}°` : '—'}
                     </td>
-                    <td>
+                    <td className="col-temp">
                       {record.tempMin !== null ? `${record.tempMin}°` : '—'}
                     </td>
-                    <td>
+                    <td className="col-intensity">
                       <span className={`badge ${className}`}>{label}</span>
                     </td>
                   </tr>

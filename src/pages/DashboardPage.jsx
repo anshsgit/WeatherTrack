@@ -123,16 +123,7 @@ export default function DashboardPage() {
         {data && location && !loading && (
           <div className="dashboard-layout animate-fade-in-up">
             {/* Location Header */}
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                marginBottom: 'var(--space-lg)',
-                flexWrap: 'wrap',
-                gap: 'var(--space-sm)',
-              }}
-            >
+            <div className="dashboard-location-bar">
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <WiRaindrop size={28} color="var(--color-accent-blue)" aria-hidden="true" />
                 <div>
@@ -148,7 +139,7 @@ export default function DashboardPage() {
 
               <button
                 id="favourite-toggle-btn"
-                className={`btn ${currentIsFav ? 'btn-danger' : 'btn-secondary'}`}
+                className={`btn ${currentIsFav ? 'btn-danger' : 'btn-secondary'} location-fav-btn`}
                 onClick={handleFavouriteToggle}
                 aria-label={currentIsFav ? 'Remove from favourites' : 'Add to favourites'}
               >
